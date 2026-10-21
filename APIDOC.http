@@ -1,0 +1,90 @@
+# ------------USER VIEW-----------------
+#API call for user register
+###
+POST http://127.0.0.1:8000/user
+Content-Type: application/json
+
+{
+    "username":"manu@123",
+    "email":"manu@gmail.com",
+    "password":"password@123"
+}
+
+# ---------------EXPENSE VIEW-----------------
+#API call for expense create
+###
+POST http://127.0.0.1:8000/expense
+Content-Type: application/json
+Authorization: Basic ann@123:password@123
+
+{
+    "title":"Electricity",
+    "amount":1800,
+    "category":"bill",
+    "payment":"UPI"
+}
+
+#API call for expense list all expense
+###
+GET http://127.0.0.1:8000/expense
+Authorization: Basic ann@123:password@123
+
+
+#API call for expense detail
+###
+GET http://127.0.0.1:8000/expense/detail/2
+Authorization: Basic manu@123:password@123
+
+
+#API call for expense update
+###
+PUT http://127.0.0.1:8000/expense/detail/1
+Authorization: Basic manu@123:password@123
+Content-Type: application/json
+
+{
+    "title":"food",
+    "amount":1000,
+    "category":"food",
+    "payment":"card"
+}
+
+#API call for expense delete
+###
+DELETE http://127.0.0.1:8000/expense/detail/2
+Authorization: Basic anu@123:password@123
+
+
+# ------------Filtering-------------
+
+#API call for filtering based on category and payment method.
+###
+GET http://127.0.0.1:8000/expense?category=food&payment=card
+Authorization: Basic ann@123:password@123
+
+###
+GET http://127.0.0.1:8000/expense?category=food
+Authorization: Basic ann@123:password@123
+
+###
+GET http://127.0.0.1:8000/expense?payment=UPI
+Authorization: Basic ann@123:password@123
+
+# --------------Searching------------------
+
+#API call for searching based on expense title.
+###
+GET http://127.0.0.1:8000/expense?search=Electricity
+Authorization: Basic ann@123:password@123
+
+# -------------------Ordering-------------
+
+#API call for ordering based on amount and created date.
+###
+GET http://127.0.0.1:8000/expense?ordering=amount
+Authorization: Basic ann@123:password@123
+
+###
+GET http://127.0.0.1:8000/expense?ordering=created_at
+Authorization: Basic ann@123:password@123
+
